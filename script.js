@@ -1,4 +1,5 @@
 
+
 fetch("https://swapi.co/api/people/4/")
     .then(response => response.json())
     .then(function (data) {
@@ -24,32 +25,32 @@ fetch("https://swapi.co/api/films/1/")
     .then(function (movie) {
         const title = movie.title
         const film1 = document.querySelector(".film1")
-        film1.innerText = `${ title }`
-})
+        film1.innerText = `${title}`
+    })
 
 fetch("https://swapi.co/api/films/2/")
     .then(response => response.json())
     .then(function (movie) {
         const title = movie.title
         const film2 = document.querySelector(".film2")
-        film2.innerText = `${ title }`
-})
+        film2.innerText = `${title}`
+    })
 
 fetch("https://swapi.co/api/films/3/")
     .then(response => response.json())
     .then(function (movie) {
         const title = movie.title
         const film3 = document.querySelector(".film3")
-        film3.innerText = `${ title }`
-})
+        film3.innerText = `${title}`
+    })
 
 fetch("https://swapi.co/api/films/6/")
     .then(response => response.json())
     .then(function (movie) {
         const title = movie.title
         const film4 = document.querySelector(".film4")
-        film4.innerText = `${ title }`
-})
+        film4.innerText = `${title}`
+    })
 
 const hobbyStuff = []
 
@@ -60,14 +61,28 @@ fetch("https://swapi.co/api/starships/13/")
         hobbyStuff.push(vehicle)
     })
     .then(fetch("https://swapi.co/api/planets/1/")
-    .then(response => response.json())
-    .then(function (homeworld) {
-        const planet = homeworld.name
-        hobbyStuff.push(planet)
-})
-    .then(function () {
-        const hobbyDiv = document.querySelector(".hobby")
-        hobbyDiv.innerText = "My favorite hobby is riding my " + hobbyStuff[0] + " around the greatest planet in the galaxy, " + hobbyStuff[1] + "."
+        .then(response => response.json())
+        .then(function (homeworld) {
+            const planet = homeworld.name
+            hobbyStuff.push(planet)
+        })
+        .then(function () {
+            const hobbyDiv = document.querySelector(".hobby")
+            hobbyDiv.innerText = "My favorite hobby is riding my " + hobbyStuff[0] + " around the greatest planet in the galaxy, " + hobbyStuff[1] + "."
+        })
+    )
+
+function search() {
+
+    document.querySelector(".submit-button").addEventListener("click", function (event) {
+        let name = document.querySelector("#name").value
     })
-)
+    fetch(`https://swapi.co/api/people/?search=${name}`)
+    .then(response => response.json())
+    .then(function (data){
+        console.log(data)
+    })
+}
+
+search()
 
